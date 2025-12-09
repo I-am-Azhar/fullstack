@@ -1,0 +1,2 @@
+This is my first Git experiment file.
+I will use this to test staging, committing, and pushing.
