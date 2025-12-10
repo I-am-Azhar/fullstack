@@ -1,0 +1,5 @@
+INFO Starting service
+ERROR Failed to connect to database
+INFO Retrying connection
+ERROR Timeout occurred
+INFO Service running
