@@ -1,0 +1,139 @@
+<h1 id="large-exercise-how-a-url-becomes-a-webpage">Large Exercise — How a URL Becomes a Webpage</h1>
+<p>This is the full document for the Large Exercise, written entirely in Markdown and ready for Pandoc conversion.<br />
+It contains: a Summary, Introduction, Background, Elaboration, two Mermaid diagrams, one architecture drawing reference, and one mindmap reference.</p>
+<hr />
+<h1 id="summary">1. Summary</h1>
+<p>This document explains what happens behind the scenes when you enter a URL in your browser and press Enter.<br />
+From DNS lookup, to server communication, to rendering the final webpage — this guide breaks down every stage in a clear, beginner-friendly way.</p>
+<hr />
+<h1 id="introduction">2. Introduction</h1>
+<p>This document is for <strong>new engineering students</strong> learning how the web works.<br />
+Understanding how a URL becomes a webpage helps with:</p>
+<ul>
+<li>debugging network issues<br />
+</li>
+<li>building full-stack apps<br />
+</li>
+<li>understanding browser behavior<br />
+</li>
+<li>improving performance</li>
+</ul>
+<p>You do <strong>not</strong> need deep networking knowledge — basic computer use is enough.</p>
+<hr />
+<h1 id="background">3. Background</h1>
+<p>Before a webpage loads, several systems work together:</p>
+<ol type="1">
+<li><strong>DNS</strong> translates domain names into IP addresses so the browser knows where the server is.<br />
+</li>
+<li><strong>TCP/TLS</strong> creates a secure connection between browser and server.<br />
+</li>
+<li><strong>HTTP</strong> is used to request webpage resources like HTML, CSS, JS, and images.<br />
+</li>
+<li><strong>Rendering engines</strong> inside the browser convert raw files into the final visible page.</li>
+</ol>
+<p>These systems evolved over time with new standards like HTTPS, CDNs, caching layers, and modern JavaScript engines.</p>
+<hr />
+<h1 id="elaboration">4. Elaboration</h1>
+<p>Below are the detailed steps that occur when loading a webpage, along with diagrams and references. ## 4.1 Mindmap — How a URL Becomes a Webpage</p>
+<figure>
+<img src="./how-url-becomes-webpage-mindmap.png" alt="" /><figcaption>Mindmap</figcaption>
+</figure>
+<hr />
+<h2 id="architecture-diagram">4.2 Architecture Diagram</h2>
+<figure>
+<img src="./Excalidraw.png" alt="" /><figcaption>Architecture</figcaption>
+</figure>
+<hr />
+<h2 id="step-by-step-process">4.3 Step-by-Step Process</h2>
+<h3 id="step-1-dns-lookup">Step 1 — DNS Lookup</h3>
+<p>When you type <code>https://example.com</code>, the browser checks:</p>
+<ul>
+<li>Browser cache<br />
+</li>
+<li>OS DNS cache<br />
+</li>
+<li>Router cache<br />
+</li>
+<li>ISP resolver<br />
+</li>
+<li>Authoritative DNS servers</li>
+</ul>
+<p>The final result returns an IP address.<br />
+Example: <code>93.184.216.34</code>.</p>
+<hr />
+<h3 id="step-2-tcp-handshake">Step 2 — TCP Handshake</h3>
+<p>Browser and server establish a reliable connection:</p>
+<ul>
+<li>SYN →<br />
+</li>
+<li>SYN-ACK ←<br />
+</li>
+<li>ACK →</li>
+</ul>
+<p>This forms a connection channel.</p>
+<hr />
+<h3 id="step-3-tls-handshake-for-https">Step 3 — TLS Handshake (for HTTPS)</h3>
+<p>If the site uses HTTPS:</p>
+<ul>
+<li>Browser validates the server certificate<br />
+</li>
+<li>Keys are exchanged securely<br />
+</li>
+<li>All communication becomes encrypted</li>
+</ul>
+<p>This prevents attackers from reading or modifying traffic.</p>
+<hr />
+<h3 id="step-4-sending-an-http-request">Step 4 — Sending an HTTP Request</h3>
+<p>Example request:</p>
+<pre><code>GET / HTTP/1.1
+Host: example.com
+Accept: text/html
+User-Agent: Chrome</code></pre>
+<p>Browser sends this through the established connection.</p>
+<hr />
+<h3 id="step-5-backend-processes-the-request">Step 5 — Backend Processes the Request</h3>
+<p>On the server:</p>
+<ol type="1">
+<li>Request hits the backend route<br />
+</li>
+<li>Server may talk to a database<br />
+</li>
+<li>Templates or JSON may be generated<br />
+</li>
+<li>Response is built<br />
+</li>
+<li>Server sends response back to browser</li>
+</ol>
+<hr />
+<h3 id="step-6-browser-rendering">Step 6 — Browser Rendering</h3>
+<p>The browser receives files and builds the webpage through:</p>
+<ol type="1">
+<li><strong>DOM</strong> — HTML structure<br />
+</li>
+<li><strong>CSSOM</strong> — CSS styling<br />
+</li>
+<li><strong>Render Tree</strong> — combined view<br />
+</li>
+<li><strong>Layout</strong> — element sizes &amp; positions<br />
+</li>
+<li><strong>Painting</strong> — drawing pixels<br />
+</li>
+<li><strong>JavaScript execution</strong> — dynamic behavior</li>
+</ol>
+<p>Finally, the webpage appears on screen.</p>
+<hr />
+<h2 id="mermaid-diagram-dns-to-tcp-flow">4.4 Mermaid Diagram — DNS to TCP Flow</h2>
+<h2 id="simple-dns-to-server-flow">4.4 Simple DNS to Server Flow</h2>
+<figure>
+<img src="./dns-to-server-sequence.png" alt="" /><figcaption>DNS to Server Diagram</figcaption>
+</figure>
+<pre class="mermaid"><code>## 4.4 Simple DNS to Server Flow
+
+![DNS to Server Diagram](./dns-to-server-sequence.png)
+</code></pre>
+<hr />
+<h2 id="mermaid-diagram-complete-page-load-flow">4.5 Mermaid Diagram — Complete Page Load Flow</h2>
+<h2 id="simple-page-load-flow">4.5 Simple Page Load Flow</h2>
+<figure>
+<img src="./page-load-flowchart.png" alt="" /><figcaption>Page Load Flowchart</figcaption>
+</figure>

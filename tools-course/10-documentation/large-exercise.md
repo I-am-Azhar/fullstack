@@ -1,0 +1,164 @@
+# Large Exercise — How a URL Becomes a Webpage
+
+This is the full document for the Large Exercise, written entirely in Markdown and ready for Pandoc conversion.  
+It contains: a Summary, Introduction, Background, Elaboration, two Mermaid diagrams, one architecture drawing reference, and one mindmap reference.
+
+---
+
+# 1. Summary
+
+This document explains what happens behind the scenes when you enter a URL in your browser and press Enter.  
+From DNS lookup, to server communication, to rendering the final webpage — this guide breaks down every stage in a clear, beginner-friendly way.
+
+---
+
+# 2. Introduction
+
+This document is for **new engineering students** learning how the web works.  
+Understanding how a URL becomes a webpage helps with:
+
+- debugging network issues  
+- building full-stack apps  
+- understanding browser behavior  
+- improving performance  
+
+You do **not** need deep networking knowledge — basic computer use is enough.
+
+---
+
+# 3. Background
+
+Before a webpage loads, several systems work together:
+
+1. **DNS** translates domain names into IP addresses so the browser knows where the server is.  
+2. **TCP/TLS** creates a secure connection between browser and server.  
+3. **HTTP** is used to request webpage resources like HTML, CSS, JS, and images.  
+4. **Rendering engines** inside the browser convert raw files into the final visible page.
+
+These systems evolved over time with new standards like HTTPS, CDNs, caching layers, and modern JavaScript engines.
+
+---
+
+# 4. Elaboration
+
+Below are the detailed steps that occur when loading a webpage, along with diagrams and references.
+## 4.1 Mindmap — How a URL Becomes a Webpage
+
+![Mindmap](./how-url-becomes-webpage-mindmap.png)
+
+
+
+---
+
+## 4.2 Architecture Diagram
+
+
+![Architecture](./Excalidraw.png)
+
+---
+
+
+## 4.3 Step-by-Step Process
+
+### Step 1 — DNS Lookup
+
+When you type `https://example.com`, the browser checks:
+
+- Browser cache  
+- OS DNS cache  
+- Router cache  
+- ISP resolver  
+- Authoritative DNS servers  
+
+The final result returns an IP address.  
+Example: `93.184.216.34`.
+
+---
+
+### Step 2 — TCP Handshake
+
+Browser and server establish a reliable connection:
+
+- SYN →  
+- SYN-ACK ←  
+- ACK →  
+
+This forms a connection channel.
+
+---
+
+### Step 3 — TLS Handshake (for HTTPS)
+
+If the site uses HTTPS:
+
+- Browser validates the server certificate  
+- Keys are exchanged securely  
+- All communication becomes encrypted  
+
+This prevents attackers from reading or modifying traffic.
+
+---
+
+### Step 4 — Sending an HTTP Request
+
+Example request:
+
+```
+GET / HTTP/1.1
+Host: example.com
+Accept: text/html
+User-Agent: Chrome
+```
+
+Browser sends this through the established connection.
+
+---
+
+### Step 5 — Backend Processes the Request
+
+On the server:
+
+1. Request hits the backend route  
+2. Server may talk to a database  
+3. Templates or JSON may be generated  
+4. Response is built  
+5. Server sends response back to browser  
+
+---
+
+### Step 6 — Browser Rendering
+
+The browser receives files and builds the webpage through:
+
+1. **DOM** — HTML structure  
+2. **CSSOM** — CSS styling  
+3. **Render Tree** — combined view  
+4. **Layout** — element sizes & positions  
+5. **Painting** — drawing pixels  
+6. **JavaScript execution** — dynamic behavior  
+
+Finally, the webpage appears on screen.
+
+---
+
+## 4.4 Mermaid Diagram — DNS to TCP Flow
+
+## 4.4 Simple DNS to Server Flow
+
+![DNS to Server Diagram](./dns-to-server-sequence.png)
+
+```mermaid
+## 4.4 Simple DNS to Server Flow
+
+![DNS to Server Diagram](./dns-to-server-sequence.png)
+
+```
+
+---
+
+## 4.5 Mermaid Diagram — Complete Page Load Flow
+
+## 4.5 Simple Page Load Flow
+
+![Page Load Flowchart](./page-load-flowchart.png)
+
